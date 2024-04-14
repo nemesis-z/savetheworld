@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
@@ -393,31 +393,73 @@ const Globe = () => {
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
   ];
+  const [isGlobeVisible, setGlobeVisibility] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setGlobeVisibility(true), 100);
+  });
 
   return (
-    <div className="relative flex h-screen w-full flex-row items-center justify-center bg-white py-20 md:h-auto dark:bg-black">
-      <div className="relative mx-auto size-full max-w-7xl overflow-hidden px-4 md:h-[40rem]">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-          }}
-        >
-          <h2 className="text-center text-xl font-bold text-black md:text-4xl dark:text-white">Save the world!</h2>
-          <p className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-700 md:text-lg dark:text-neutral-200">
-            We don&#39;t want problems, we want peace, always!
-          </p>
-        </motion.div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-40 w-full select-none bg-gradient-to-b from-transparent to-white dark:to-black" />
-        <div className="absolute -bottom-20 z-10 h-72 w-full md:h-full">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+    <div className="relative flex h-screen w-full flex-row items-center justify-center bg-white md:h-auto dark:bg-black">
+      <div className="flex-1 py-20">
+        <div className="relative">
+          <div className="relative mx-auto size-full max-w-7xl px-4">
+            <div className="relative z-10">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+              >
+                <h2 className="text-center text-4xl font-bold text-black dark:text-white">Save the world!</h2>
+              </motion.div>
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                }}
+              >
+                <p className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-700 md:text-lg dark:text-neutral-200">
+                  We don&#39;t want problems, we want peace, always!
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.4,
+                }}
+              >
+                <p className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-700 md:text-lg dark:text-neutral-200">
+                  Let&#39;s share some memes in our{' '}
+                  <a className="underline" href="https://t.me/+Ss_teyBmqSIzNTE0">
+                    Telegram
+                  </a>
+                </p>
+              </motion.div>
+            </div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 w-full select-none bg-gradient-to-b from-transparent to-white dark:to-black" />
+            <div className="h-72 w-full md:h-[480px]">
+              {isGlobeVisible && <World data={sampleArcs} globeConfig={globeConfig} />}
+            </div>
+          </div>
         </div>
       </div>
     </div>
