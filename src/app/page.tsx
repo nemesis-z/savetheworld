@@ -1,4 +1,4 @@
-import Globe from '~/components/background/globe';
+import Globe from '~/components/globe';
 
 const Home = () => {
   return (

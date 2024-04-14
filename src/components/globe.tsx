@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
-const World = dynamic(() => import('../ui/globe').then((m) => m.World), {
+const World = dynamic(() => import('./ui/globe').then((m) => m.World), {
   ssr: false,
 });
 
@@ -410,9 +410,7 @@ const Globe = () => {
             duration: 1,
           }}
         >
-          <h2 className="text-center text-xl font-bold text-black md:text-4xl dark:text-white">
-            Save the world!
-          </h2>
+          <h2 className="text-center text-xl font-bold text-black md:text-4xl dark:text-white">Save the world!</h2>
           <p className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-700 md:text-lg dark:text-neutral-200">
             We don&#39;t want problems, we want peace, always!
           </p>
